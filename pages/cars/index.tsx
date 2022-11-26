@@ -26,7 +26,7 @@ const Cars: NextPage<CarsProps> = ({ cars }) => {
 export default Cars;
 
 export async function getStaticProps() {
-  const req = await fetch(`http://localhost:3000/api/cars`);
+  const req = await fetch(`/api/cars`);
   const data = await req.json();
 
   return {

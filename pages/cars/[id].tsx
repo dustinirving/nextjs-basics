@@ -15,7 +15,7 @@ const Car: NextPage<CarProps> = ({ car }) => {
 export default Car;
 
 export async function getStaticProps({ params }: { params: { id: string } }) {
-  const req = await fetch(`http://localhost:3000/api/cars/${params.id}`);
+  const req = await fetch(`/api/cars/${params.id}`);
   const car = await req.json();
   return {
     props: { car },
@@ -23,7 +23,7 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
 }
 
 export async function getStaticPaths() {
-  const req = await fetch(`http://localhost:3000/api/cars`);
+  const req = await fetch(`/api/cars`);
   const data = await req.json();
   const paths = data.results.map((car: Car) => {
     return { params: { id: car.model } };
